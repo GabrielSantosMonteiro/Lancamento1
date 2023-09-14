@@ -1,0 +1,59 @@
+função AreaCirculo(raio):
+    retorne pi * raio²
+
+função AreaRetangulo(largura, altura):
+    retorne largura, altura
+
+função AreaTriangulo(base, altura):
+    retorne (base * altura) / 2
+
+função adc_circulo(raio):
+    area = AreaCirculo(raio)
+    adc_forma("Círculo", area)
+
+função adc_retangulo(altura, largura):
+    area <- AreaRetangulo(altura, largura)
+    adc_forma("Retângulo", área)
+
+função adc_triangulo(base, altura):
+    area <- AreaTriangulo(base, altura)
+    adc_forma("Triângulo", área)
+
+
+   main():
+
+  
+   opcao = escreval("Qual figura bidimensional deseja criar? \n 1. Circulo \n 2. Retangulo \n 3. Triangulo \n 4. Exibir cadastradas")
+   leia opcao
+
+\* Essas são as tres figuras bidimensionais básicas, além do quadrado, mas vale lembrar que todo quadrado é um retângulo *\
+        
+        se opcao == 1:
+
+              raio = escreval("Raio: ")
+              leia raio
+              adc_circulo(raio)
+        
+        se opcao == 2:
+        
+             altura = escreval("Altura: ")
+             leia altura
+             
+             largura = escreval("Largura: ")
+             leia largura
+             adc_retangulo(altura, largura)
+        
+        se opção == 3:
+        
+             base = escreval("Base: ")
+             leia base
+             
+             altura = escreval("Altura: ")
+             leia altura 
+             adc_triangulo(base, altura)
+        
+        se opção == 4:
+        
+            escreval("Nome: ", forma["Nome"])
+            escreval("Área: ", forma["Área"])
+  
