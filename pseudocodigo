@@ -1,59 +1,145 @@
-função AreaCirculo(raio):
-    retorne pi * raio²
+\* Nesse código foram definidas as principais figuras bidimensionais, e por meio dessas é possível calcular a área de cada uma*\
 
-função AreaRetangulo(largura, altura):
-    retorne largura, altura
+\* Apesar de ser um pseudocódigo, já o fiz pensado orientado a objetos, por isso usei funções como __init__ para instanciar os objetos*\
 
-função AreaTriangulo(base, altura):
-    retorne (base * altura) / 2
+classe Circulo:
+    função __init__(self, raio):
+        self.raio = raio
+    
+    função calcular_area(self):
+        retorne pi * (self.raio ** 2)
 
-função adc_circulo(raio):
-    area = AreaCirculo(raio)
-    adc_forma("Círculo", area)
+classe Retangulo:
+    função __init__(self, largura, altura):
+        self.largura = largura
+        self.altura = altura
+    
+    função calcular_area(self):
+        retorne self.largura * self.altura
 
-função adc_retangulo(altura, largura):
-    area <- AreaRetangulo(altura, largura)
-    adc_forma("Retângulo", área)
+classe Triangulo:
+    função __init__(self, base, altura):
+        self.base = base
+        self.altura = altura
+    
+    função calcular_area(self):
+        retorne (self.base * self.altura) / 2
 
-função adc_triangulo(base, altura):
-    area <- AreaTriangulo(base, altura)
-    adc_forma("Triângulo", área)
+classe Losango:
+    função __init__(self, diagonal_maior, diagonal_menor):
+        self.diagonal_maior = diagonal_maior
+        self.diagonal_menor = diagonal_menor
+    
+    função calcular_area(self):
+        retorne (self.diagonal_maior * self.diagonal_menor) / 2
 
+classe Trapezio:
+    função __init__(self, base_maior, base_menor, altura):
+        self.base_maior = base_maior
+        self.base_menor = base_menor
+        self.altura = altura
+    
+    função calcular_area(self):
+        retorne ((self.base_maior + self.base_menor) / 2) * self.altura
 
-   main():
+classe Pentagono:
+    função __init__(self, lado, apotema):
+        self.lado = lado
+        self.apotema = apotema
+\* Apesar de não ser tão comum, pela praticidade escolhi usar o apótema para calcular a aréa, que consiste da distância do centro até o ponto médio de um dos lados*\
+    
+    função calcular_area(self):
+        retorne (5 * self.lado * self.apotema) / 2
 
-  
-   opcao = escreval("Qual figura bidimensional deseja criar? \n 1. Circulo \n 2. Retangulo \n 3. Triangulo \n 4. Exibir cadastradas")
-   leia opcao
+classe Hexagono:
+    função __init__(self, lado):
+        self.lado = lado
+    
+    função calcular_area(self):
+        retorne (3 * (3 ** 0.5) * (self.lado ** 2)) / 2
 
-\* Essas são as tres figuras bidimensionais básicas, além do quadrado, mas vale lembrar que todo quadrado é um retângulo *\
-        
-        se opcao == 1:
+/* Para armazenar as figuras cadastradas, criei essa lista*/
 
-              raio = escreval("Raio: ")
-              leia raio
-              adc_circulo(raio)
-        
-        se opcao == 2:
-        
-             altura = escreval("Altura: ")
-             leia altura
-             
-             largura = escreval("Largura: ")
-             leia largura
-             adc_retangulo(altura, largura)
-        
-        se opção == 3:
-        
-             base = escreval("Base: ")
-             leia base
-             
-             altura = escreval("Altura: ")
-             leia altura 
-             adc_triangulo(base, altura)
-        
-        se opção == 4:
-        
-            escreval("Nome: ", forma["Nome"])
-            escreval("Área: ", forma["Área"])
-  
+cadastradas = [] 
+
+enquanto a opcao for maior que 0 e menor ou igual a 8:
+    escreval("Qual figura bidimensional deseja criar?")
+    escreval("1. Círculo")
+    escreval("2. Retângulo")
+    escreval("3. Triângulo")
+    escreval("4. Losango")
+    escreval("5. Trapézio")
+    escreval("6. Pentagono")
+    escreval("7. Hexagono")
+    escreval("8. Exibir cadastradas")
+    
+    leia opcao
+    
+    se opcao == 1:
+        raio = escreval("Raio: ")
+        leia raio
+        circulo = Circulo(raio)
+        area = circulo.calcular_area()
+        cadastradas.adicionar({"Nome": "Círculo", "Área": area})
+    
+    senão se opcao == 2:
+        altura = escreval("Altura: ")
+        leia altura
+        largura = escreval("Largura: ")
+        leia largura
+        retangulo = Retangulo(largura, altura)
+        area = retangulo.calcular_area()
+        cadastradas.adicionar({"Nome": "Retângulo", "Área": area})
+    
+    senão se opcao == 3:
+        base = escreval("Base: ")
+        leia base
+        altura = escreval("Altura: ")
+        leia altura
+        triangulo = Triangulo(base, altura)
+        area = triangulo.calcular_area()
+        cadastradas.adicionar({"Nome": "Triângulo", "Área": area})
+
+    senão se opcao == 4:
+        diagonal_maior = escreval("Diagonal Maior: ")
+        leia diagonal_maior
+        diagonal_menor = escreval("Diagonal Menor: ")
+        leia diagonal_menor
+        losango = Losango(diagonal_maior, diagonal_menor)
+        area = losango.calcular_area()
+        cadastradas.adicionar({"Nome": "Losango", "Área": area})
+
+    senão se opcao == 5:
+        base_maior = escreval("Base Maior: ")
+        leia base_maior
+        base_menor = escreval("Base Menor: ")
+        leia base_menor
+        altura = escreval("Altura: ")
+        leia altura
+        trapezio = Trapezio(base_maior, base_menor, altura)
+        area = trapezio.calcular_area()
+        cadastradas.adicionar({"Nome": "Trapézio", "Área": area})
+
+    senão se opcao == 6:
+        lado = escreval("Lado: ")
+        leia lado
+        apotema = escreval("Apotema: ")
+        leia apotema
+        pentagono = Pentagono(lado, apotema)
+        area = pentagono.calcular_area()
+        cadastradas.adicionar({"Nome": "Pentagono", "Área": area})
+
+    senão se opcao == 7:
+        lado = escreval("Lado: ")
+        leia lado
+        hexagono = Hexagono(lado)
+        area = hexagono.calcular_area()
+        cadastradas.adicionar({"Nome": "Hexagono", "Área": area})
+    
+    senão se opcao == 8:
+        para cadastrada em cadastradas:
+            escreval("Nome:", cadastrada["Nome"])
+            escreval("Área:", cadastrada["Área"])
+    
+    senão:
+        escreval("Opção incorreta, digite um valor de 1 a 8")
