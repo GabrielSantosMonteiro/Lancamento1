@@ -1,40 +1,51 @@
 \* Nesse código foram definidas as principais figuras bidimensionais, e por meio dessas é possível calcular a área de cada uma*\
 
 \* Apesar de ser um pseudocódigo, já o fiz pensado orientado a objetos, por isso usei funções como __init__ para instanciar os objetos*\
+  
+classe FigurasBidimensionais:
+    função calcular_area(self):
 
-classe Circulo:
+\\Classe mãe que vai herdar as demais classes
+
+classe Circulo(FigurasBidimensionais):
     função __init__(self, raio):
+
+        FigurasBidimensionais.__init__(self)
         self.raio = raio
     
     função calcular_area(self):
         retorne pi * (self.raio ** 2)
 
-classe Retangulo:
+classe Retangulo(FigurasBidimensionais):
     função __init__(self, largura, altura):
+        FigurasBidimensionais.__init__(self)
         self.largura = largura
         self.altura = altura
     
     função calcular_area(self):
         retorne self.largura * self.altura
 
-classe Triangulo:
+classe Triangulo(FigurasBidimensionais):
     função __init__(self, base, altura):
+        FigurasBidimensionais.__init__(self)
         self.base = base
         self.altura = altura
     
     função calcular_area(self):
         retorne (self.base * self.altura) / 2
 
-classe Losango:
+classe Losango(FigurasBidimensionais):
     função __init__(self, diagonal_maior, diagonal_menor):
+        FigurasBidimensionais.__init__(self)
         self.diagonal_maior = diagonal_maior
         self.diagonal_menor = diagonal_menor
     
     função calcular_area(self):
         retorne (self.diagonal_maior * self.diagonal_menor) / 2
 
-classe Trapezio:
+classe Trapezio(FigurasBidimensionais):
     função __init__(self, base_maior, base_menor, altura):
+        FigurasBidimensionais.__init__(self)
         self.base_maior = base_maior
         self.base_menor = base_menor
         self.altura = altura
@@ -42,17 +53,19 @@ classe Trapezio:
     função calcular_area(self):
         retorne ((self.base_maior + self.base_menor) / 2) * self.altura
 
-classe Pentagono:
+classe Pentagono(FigurasBidimensionais):
     função __init__(self, lado, apotema):
+        FigurasBidimensionais.__init__(self)
         self.lado = lado
         self.apotema = apotema
 \* Apesar de não ser tão comum, pela praticidade escolhi usar o apótema para calcular a aréa, que consiste da distância do centro até o ponto médio de um dos lados*\
-    
+
     função calcular_area(self):
         retorne (5 * self.lado * self.apotema) / 2
 
-classe Hexagono:
+classe Hexagono(FigurasBidimensionais):
     função __init__(self, lado):
+        FigurasBidimensionais.__init__(self)
         self.lado = lado
     
     função calcular_area(self):
